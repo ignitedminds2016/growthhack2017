@@ -34,6 +34,22 @@
   min-height: 1000px;
   border: 1px solid;
 }
+.map {height: 100%;}
+    html, body {height: 100%; margin: 0; padding: 0;}
+
+    #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 </style>
 
 
@@ -78,17 +94,10 @@
   
 <div class="container" style="min-height: 150px;"></div>
 <div class="row" style="margin-left: 160px;margin-top: -73px;margin-bottom: -6px;">
-<div class="col-sm-6">
-
-
-</div>
 <div class="col-sm-6" style="margin-left: 375px"> Points Accumlated :<span id="points" style="
     font-size: large;
     font-weight: bold;"> 3000 </span>    PTS</div>
 
-</div>
-
-<div class="col-sm-6">
 </div>
 
 <div class="horizon" style="
@@ -97,14 +106,16 @@
 "></div>
 
 
-</div>
 
 <div class="container">
   <div class="row vdivide">
-    <div class="col-sm-3 text-center"><h1>One</h1>
+    <div class="col-sm-3 text-center">
+      <h1>One</h1>
     </div>
-    <div class="col-sm-9 text-center"><h1>Two</h1>
+    <div class="col-sm-9 text-center">
+        <div id="map" style="width:999px;height:999px;background:#1274b8"></div>
     </div>
+
   </div>
 </div>
 
@@ -121,9 +132,16 @@ $( document ).ready(function getRandomSite(){
    var i = parseInt(Math.random()*(values.length-1));
    $("#points").text(i)
 });
-
-
-
+function myMap() {
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.2),
+        zoom: 10
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+}; 
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKRHmFFX7H1-KaGw053QEqZ1_WaxaCqM&callback=myMap"></script>
 </body>
 </html>
