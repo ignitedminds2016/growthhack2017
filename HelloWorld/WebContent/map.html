@@ -21,58 +21,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-<!--
-<script
-  src="https://cod<form style="
-    margin-left: 300px;
-    margin-top: 130px;
-">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Where</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="location" style="
-    width: 150px;">
-  </div>
-  <div class="form-check">
-    <div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <div class="input-group date" id="datetimepicker1">
-                    <input type="text" class="form-control">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>e.jquery.com/jquery-1.12.4.js"
-  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-  crossorigin="anonymous"></script>
-<!-- Latest compiled and minified CSS -->
+<style type="text/css">
+  .row.vdivide [class*='col-']:not(:last-child):after {
+  background: black;
+  width: 1px;
+  content: "";
+  display:block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  min-height: 600px;
+  border: 1px solid;
+}
+</style>
 
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<!--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<!--
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
 
 </head>
@@ -117,20 +80,11 @@
 <div class="row" style="margin-left: 160px;margin-top: -73px;margin-bottom: -6px;">
 <div class="col-sm-6">
 
-<div class="row">
-  <div class="col-sm-3">
-     <input type="text" class="form-control" placeholder="First name" id="address" style="
-        font-weight: bold;
-        font-size: large;
-        font-family: initial;
-    ">
 
-  </div>
 </div>
-</div>
-<div class="col-sm-6"> Points Accumlated :<span id="points" style="
+<div class="col-sm-6" style="margin-left: 375px"> Points Accumlated :<span id="points" style="
     font-size: large;
-    font-weight: bold;"> 3000 PTS</span></div>
+    font-weight: bold;"> 3000 </span>    PTS</div>
 
 </div>
 
@@ -142,7 +96,18 @@
     margin-top: 10px;
 "></div>
 
-<div class="row" style="margin-left: 160px;margin-top: -73px;margin-bottom: -6px;">
+
+</div>
+
+<div class="container">
+  <div class="row vdivide">
+    <div class="col-sm-3 text-center"><h1>One</h1>
+    </div>
+    <div class="col-sm-9 text-center"><h1>Two</h1>
+    </div>
+  </div>
+</div>
+
 
 <script type="text/javascript" >
   // A $( document ).ready() block.
@@ -150,6 +115,15 @@
 $( document ).ready(function() {
 $('#address').val(localStorage.getItem('where'));
 });
+
+$( document ).ready(function getRandomSite(){
+   var values = [100,2000,500,600,10000,4000,8000];
+   var i = parseInt(Math.random()*(values.length-1));
+   $("#points").text(i)
+});
+
+
+
 </script>
 </body>
 </html>
