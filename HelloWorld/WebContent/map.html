@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Get Suggestions</title>
+<link href="css/homePage.css" rel="stylesheet" type="text/css" media="all"> 
+<link rel="image_src" href="images/amex_logo.gif" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"> 
+<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<link type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<!--
+<script
+  src="https://cod<form style="
+    margin-left: 300px;
+    margin-top: 130px;
+">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Where</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="location" style="
+    width: 150px;">
+  </div>
+  <div class="form-check">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker1">
+                    <input type="text" class="form-control">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>e.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<!--
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div class="container">
+        <nav id="header" class="navbar navbar-fixed-top" style="
+    background-color: #1274b8;>
+            <div id="header-container" class="container navbar-container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand" class="navbar-brand" href="#" style="
+              color: #fff;
+              font-size: 20px;
+              font-weight: 900;
+          ">AMERICAN EXPRESS </a>
+                </div>
+               
+                <div class="navbar">
+                  <a  class="btn btn-primary active" style="float: right;
+              margin-right: 100px;
+              padding-top: 12px;
+              margin-top: 10px;
+              font-size: 16px;
+              font-weight: 600;
+          " 
+          href="https://online.americanexpress.com/myca/logon/us/action/LogonHandler?request_type=LogonHandler&Face=en_US&inav=iNavLnkLog" target="_blank">Link your Card</a>
+                    
+                </div>
+</nav>
+            
+</div>
+  
+<div class="container" style="min-height: 150px;"></div>
+ <div class="row" style="margin-left: 160px;">
+<div class="col-sm-6">
+
+<div class="row">
+  <div class="col-sm-3">
+     <input type="text" class="form-control" placeholder="First name" id="address"/>
+  </div>
+</div>
+</div>
+<div class="col-sm-6"> Points Accumlated <span id="points"> 3000</span></div>
+
+</div>
+<div class="horizon" style="
+    border: 1px solid;
+    margin-top: 10px;
+"></div>
+<script type="text/javascript" >
+  // A $( document ).ready() block.
+
+$( document ).ready(function() {
+$('#address').val(localStorage.getItem('where'));
+});
+</script>
+</body>
+</html>
