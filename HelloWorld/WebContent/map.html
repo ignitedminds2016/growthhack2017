@@ -104,7 +104,7 @@ text-align :right;
   
      <div class="row" style="border-bottom:2px solid #ccc;"> 
         <div class="col-sm-9"></div>
-        <div class="col-sm-3"> Points Accumulated : 
+        <div class="col-sm-3"> Reward Points : 
           <span id="points" style="font-weight: bold;font-size: 20px;"></span> PTS
         </div> 
      </div>
@@ -236,14 +236,14 @@ $( document ).ready(function getRandomSite(){
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
-   $("#points").text(getRandomIntInclusive(1000, 11684));
+   $("#points").text(getRandomIntInclusive(6000, 11684));
 
 });
 function myMap() {
     var mapCanvas = document.getElementById("map");
     var mapOptions = {
         center: new google.maps.LatLng(51.5, -0.2),
-        zoom: 10
+        zoom: 15
     };
     var map = new google.maps.Map(mapCanvas, mapOptions);
 
