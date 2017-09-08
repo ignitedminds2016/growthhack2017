@@ -1,52 +1,123 @@
-<!--
-  Copyright 2017 Google Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Places To See!!</title>
-  <style>
-    .map {height: 100%;}
-    html, body {height: 100%; margin: 0; padding: 0;}
+<meta charset="UTF-8">
+<title>Plan Your Trip</title>
+<link href="css/homePage.css" rel="stylesheet" type="text/css" media="all"> 
+<link rel="image_src" href="images/amex_logo.gif" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"> 
+<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<link type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-  </style>
-<head>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+
 <body>
-    <div id="floating-panel">
-      <input id="address" type="textbox" value="London, UK">
-      <input id="submit" type="button" value="LookUp">
+
+<!-- Fixed navbar -->
+        <nav id="header" class="navbar navbar-fixed-top" style="
+    background-color: #1274b8;>
+            <div id="header-container" class="container navbar-container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand" class="navbar-brand" href="#" style="
+    					color: #fff;
+    					font-size: 20px;
+    					font-weight: 900;
+					">AMERICAN EXPRESS </a>
+                </div>
+               
+                <div class="navbar">
+                  <a href="https://online.americanexpress.com/myca/logon/us/action/LogonHandler?request_type=LogonHandler&Face=en_US&inav=iNavLnkLog" target="_blank"><img src="images/amex_green.png" style="
+			    		height: 31px;
+			    		width: 46px;
+    					float: right;
+    					margin-top: 10px;
+    					margin-right: 50px;">
+                    
+                </div>
+</nav>
+            </div><!-- /.container -->
+
+
+            <div class="container">
+            	
+            	<form style="
+    		margin-left: 300px;
+    	margin-top: 130px;
+		">
+  <div class="form-group">
+    <label for="where">Where</label>
+    <input type="text" class="form-control" id="where" placeholder="location" style="
+    width: 150px;">
+  </div>
+  <div class="form-check">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="when" style="width: 151px; margin-left: -16px;">
+                    <input type="text" id="abc" class="form-control">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#when').datetimepicker( {  format: 'YYYY-MM-DD'});
+            });
+        </script>
     </div>
+</div>
+  </div>
+  <a  class="btn btn-primary active" style="
+					    margin-right: 100px;
+					    padding-top: 12px;
+					    margin-top: 10px;
+					    font-size: 16px;
+					    font-weight: 600;
+					" 
+					href="map.html" onclick="ValidationEvent()">Plan Your Trip</a>
+        
+    </div>
+           </div>	
 
-  <div class="map"></div>
 
-  <script src="app.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=MY_KEY&callback=initMap">
-    </script>
+
+</div>
+<script>
+function ValidationEvent() {
+
+	var where = document.getElementById("where").value;
+	var when = document.getElementById("abc").value;
+
+	
+	localStorage.setItem( 'where', where );
+	localStorage.setItem( 'when', when );
+
+    window.location.href = "map.html"
+
+}
+</script>
+
 
 </body>
 </html>
