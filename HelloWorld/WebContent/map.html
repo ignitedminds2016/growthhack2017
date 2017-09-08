@@ -22,34 +22,47 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <style type="text/css">
-  .row.vdivide [class*='col-']:not(:last-child):after {
-  background: black;
-  width: 1px;
-  content: "";
-  display:block;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  right: 0;
-  min-height: 1000px;
-  border: 1px solid;
+#offerList {
+  padding: 0px;
+  max-height: 991px;
+  overflow-y: scroll;
 }
-.map {height: 100%;}
-    html, body {height: 100%; margin: 0; padding: 0;}
+ #offerList li {
+  border-bottom: 2px solid #ccc; 
+ }
+ #offerList li:nth-child(odd){
+ / background:#ccc;
+}
 
-    #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
+
+.offerList1{
+
+  padding: 2px;
+  margin-left: 20px;
+
+}
+.category{
+text-align: center; 
+padding-right:10px;
+font-weight: bold;
+}
+.offervalue{
+text-align :right;
+}
+
+.drop-down select {
+    width: 81%;
+    margin-left: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.drop-down select option{
+    text-align: center;
+    font-weight: bold;
+
+}
 </style>
 
 
@@ -89,36 +102,68 @@
                     
                 </div>
 </nav>
-            
-</div>
+     <div class="row dont put anything" style="min-height: 80px;"> </div>
   
+     <div class="row" style="border-bottom:2px solid #ccc;"> 
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3"> Points Accumulated : 
+          <span id="points" style="font-weight: bold;font-size: 20px;"></span> PTS
+        </div> 
+     </div>
+     <div class="row">
+       <div class="col-sm-3" style="border:2px solid #ccc;padding: 0; min-height: 1000px;">
+          <div class="row ">
+            <div class=" drop-down"></div>
+          </div>
+          <div>
+             <ul id="offerList">
+        
+          </ul>
+          </div>
+          
+       </div>
+       <div class="col-sm-9">
+         <div id="map" style="width:866px;height: 1000px; "></div>
+
+       </div>
+     </div>
+
+</div>
+
+
+<p id="location" style=""></p>
+ <!-- 
 <div class="container" style="min-height: 150px;"></div>
 <div class="row" style="margin-left: 160px;margin-top: -73px;margin-bottom: -6px;">
-<div class="col-sm-6" style="margin-left: 375px"> Points Accumlated :<span id="points" style="
-    font-size: large;
-    font-weight: bold;"> 3000 </span>    PTS</div>
-
-</div>
-
+<div class="col-sm-6" style="margin-left: 375px;text-align: right;"> Points Accumlated :<span id="points" style="
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    padding-left: 8px;
+    "></span>    PTS</div>
 <div class="horizon" style="
     border: 1px solid;
     margin-top: 10px;
 "></div>
 
-
+<div class="col-sm-6"></div>
 
 <div class="container">
   <div class="row vdivide">
-    <div class="col-sm-3 text-center">
-      <h1>One</h1>
+    <div class="col-sm-3">
+      <ul id="offerList">
+        
+      </ul>
     </div>
     <div class="col-sm-9 text-center">
-        <div id="map" style="width:999px;height:999px;background:#1274b8"></div>
+        <div id="map" style="width:999px;height:999px;background:#"></div>
     </div>
 
   </div>
 </div>
 
+<p id="location"></p>
+-->
 
 <script type="text/javascript" >
   // A $( document ).ready() block.
@@ -127,10 +172,74 @@ $( document ).ready(function() {
 $('#address').val(localStorage.getItem('where'));
 });
 
+var offerJson= {"type":"FeatureCollection","features":[{"geometry":{"type":"Point","coordinates":[-0.145365,51.506182]},"type":"Feature","properties":{"category":"patisserie","hours":"10am - 6pm","description":"Modern twists on classic pastries. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Mayfair","phone":"+44 20 1234 5678"}},{"geometry":{"type":"Point","coordinates":[-2.579623,51.452251]},"type":"Feature","properties":{"category":"patisserie","hours":"10am - 6pm","description":"Come and try our award-winning cakes and pastries. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Bristol","phone":"+44 117 121 2121"}},{"geometry":{"type":"Point","coordinates":[1.273459,52.638072]},"type":"Feature","properties":{"category":"patisserie","hours":"10am - 6pm","description":"Whatever the occasion, whether it's a birthday or a wedding, Josie's Patisserie has the perfect treat for you. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Norwich","phone":"+44 1603 123456"}},{"geometry":{"type":"Point","coordinates":[-1.882509,50.848831]},"type":"Feature","properties":{"category":"patisserie","hours":"10am - 6pm","description":"A gourmet patisserie that will delight your senses. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Wimborne","phone":"+44 1202 343434"}},{"geometry":{"type":"Point","coordinates":[-2.985933,53.408899]},"type":"Feature","properties":{"category":"patisserie","hours":"10am - 6pm","description":"Spoil yourself or someone special with our classic pastries. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Liverpool","phone":"+44 151 444 4444"}},{"geometry":{"type":"Point","coordinates":[-1.689423,52.632469]},"type":"Feature","properties":{"category":"Restaurant","hours":"10am - 6pm","description":"Come and feast your eyes and tastebuds on our delicious pastries and cakes. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Tamworth","phone":"+44 5555 55555"}},{"geometry":{"type":"Point","coordinates":[-3.155305,51.479756]},"type":"Feature","properties":{"category":"Restaurant","hours":"10am - 6pm","description":"Josie's Patisserie is family-owned, and our delectable pastries, cakes, and great coffee are renowed. We're part of a larger chain of patisseries and cafes.","name":"Josie's Patisserie Cardiff","phone":"+44 29 6666 6666"}},{"geometry":{"type":"Point","coordinates":[-0.725019,52.668891]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"Oakham's favorite spot for fresh coffee and delicious cakes. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Oakham","phone":"+44 7777 777777"}},{"geometry":{"type":"Point","coordinates":[-2.477653,53.735405]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"Enjoy freshly brewed coffe, and home baked cakes in our homely cafe. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Blackburn","phone":"+44 8888 88888"}},{"geometry":{"type":"Point","coordinates":[-0.211363,51.108966]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"A delicious array of pastries with many flavours, and fresh coffee in an snug cafe. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Crawley","phone":"+44 1010 101010"}},{"geometry":{"type":"Point","coordinates":[-0.123559,50.832679]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"Grab a freshly brewed coffee, a decadent cake and relax in our idyllic cafe. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Brighton","phone":"+44 1313 131313"}},{"geometry":{"type":"Point","coordinates":[-3.319575,52.517827]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"Come in and unwind at this idyllic cafe with fresh coffee and home made cakes. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Newtown","phone":"+44 1414 141414"}},{"geometry":{"type":"Point","coordinates":[1.158167,52.071634]},"type":"Feature","properties":{"category":"cafe","hours":"8am - 9:30pm","description":"Fresh coffee and delicious cakes in an snug cafe. We're part of a larger chain of patisseries and cafes.","name":"Josie's Cafe Ipswich","phone":"+44 1717 17171"}}]}
+
+
+
+var y=[];
+var Categories=[];
+
+var result =[];
+
+
+var category=[]
+
+
+var temp=[];
+ var properties= offerJson.features.map(function(data){
+  //category.push(data.properties.category)  
+  if(category.indexOf(data.properties.category) < 0) {
+    category.push(data.properties.category);
+  
+     }
+     
+})
+ var result1=[];
+ category.forEach(function(item){
+  if(result1.indexOf(item) < 0) {
+    result1.push("<option>"+item+"</option>");
+  
+     }
+ });
+$(".drop-down").html("<select class='form-control select-offer'>"+ result1 +"</select>");
+
+offerJson.features.forEach( function(ele){ 
+
+  if($('select').val() == ele.properties.category){
+      y.push("<li>"
+    +"<p class='offerList1'><span class='category'>Category : </span>"+"<span class='offervalue'>"+ele.properties.category+"</span></p>"+"<p class='offerList1'><span class='category'>Hours : </span>"+"<span class='offervalue'>"+ele.properties.hours+"</span></p>"+"<p class='offerList1'><span class='category'>Name : </span><span class='offervalue'>"+ele.properties.name+"</span></p>"+"<p class='offerList1'><span class='category'>phone : </span><span class='offervalue'>"+ele.properties.phone+"</span></p>"+"</li>")
+  }
+
+});
+
+
+$('body').on('change' ,'.select-offer', function(){
+  var x= this.value;
+$('#offerList li').remove();
+y=[];
+  offerJson.features.forEach( function(ele){ 
+      
+       console.log(x == ele.properties.category)
+  if(x == ele.properties.category){
+   
+      y.push("<li>"
+    +"<p class='offerList1'><span class='category'>Category : </span>"+"<span class='offervalue'>"+ele.properties.category+"</span></p>"+"<p class='offerList1'><span class='category'>Hours : </span>"+"<span class='offervalue'>"+ele.properties.hours+"</span></p>"+"<p class='offerList1'><span class='category'>Name : </span><span class='offervalue'>"+ele.properties.name+"</span></p>"+"<p class='offerList1'><span class='category'>phone : </span><span class='offervalue'>"+ele.properties.phone+"</span></p>"+"</li>")
+  }
+
+});
+$("#offerList").html(y.toString());
+})
+
+$("#offerList").html(y);
+
 $( document ).ready(function getRandomSite(){
-   var values = [100,2000,500,600,10000,4000,8000];
-   var i = parseInt(Math.random()*(values.length-1));
-   $("#points").text(i)
+   function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
+   $("#points").text(getRandomIntInclusive(100, 500));
+
 });
 function myMap() {
     var mapCanvas = document.getElementById("map");
@@ -139,9 +248,48 @@ function myMap() {
         zoom: 10
     };
     var map = new google.maps.Map(mapCanvas, mapOptions);
-}; 
+
+
+};
+
+
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKRHmFFX7H1-KaGw053QEqZ1_WaxaCqM&callback=myMap"></script>
+
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKRHmFFX7H1-KaGw053QEqZ1_WaxaCqM&callback=myMap"></script>-->
+
+ <!--<script type="text/javascript" src="app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKRHmFFX7H1-KaGw053QEqZ1_WaxaCqM&callback=initMap">
+    </script>-->
+  <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCLKRHmFFX7H1-KaGw053QEqZ1_WaxaCqM"></script>
+  <script src="script.js"></script>
+<footer class="bd-footer text-muted">
+<div class="row">
+  <div class="col-sm-12" style="margin-top: 30px;">
+    <span class=" content-footer"> <a href="" target="_blank">facebook</a></span>
+     <span class=" content-footer"> <a href="" target="_blank">gmail</a></span>
+      <span class=" content-footer"></span>
+       <span class=" content-footer"></span>
+        <span class=" content-footer"></span>
+  </div>
+</div>
+</footer>
+<style type="text/css">
+  footer {
+    background-color: #f7f7f7;
+  min-height: 200px;
+  }
+  .content-footer{
+        padding: 20px;
+    margin: 10px;
+
+  }
+  #location {
+    position: absolute;
+    left: -500px;
+  }
+</style>
+<!--/.Footer-->
 </body>
 </html>

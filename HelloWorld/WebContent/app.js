@@ -154,7 +154,8 @@ function sanitizeHTML(strings) {
 ///Location fetch
 
       function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
+        alert('Where here :'+ocalStorage.getItem('where'))
+        var address = 'phoenix';
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
@@ -166,8 +167,7 @@ function sanitizeHTML(strings) {
             //var pyrmont = resultsMap.getCenter();
 	     var lat=  resultsMap.getCenter().lat();
 	     var lng=  resultsMap.getCenter().lng();
-            console.log( lat);
-            console.log( lng);
+           
 	    var service = new google.maps.places.PlacesService(resultsMap);
         	service.nearbySearch({
           		location:new google.maps.LatLng(lat,lng),
@@ -190,7 +190,7 @@ function sanitizeHTML(strings) {
 function initMap() {
 
   // Create the map.
-    map = new google.maps.Map(document.getElementsByClassName('map')[0], {
+    map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: {lat: 52.632469, lng: -1.689423},
     styles: mapStyle
@@ -203,7 +203,7 @@ function initMap() {
   map.data.setStyle(feature => {
     return {
       icon: {
-        url: `img/icon_${feature.getProperty('category')}.png`,
+        url: `images/icon_${feature.getProperty('category')}.png`,
         scaledSize: new google.maps.Size(64, 64)
       }
     };
@@ -214,11 +214,10 @@ function initMap() {
   infoWindow.setOptions({pixelOffset: new google.maps.Size(0, -30)});
 
 
-        //change to other city,place
-           var geocoder = new google.maps.Geocoder();
-           document.getElementById('submit').addEventListener('click', function() {
-                 geocodeAddress(geocoder, map);
-           });
+  var geocoder = new google.maps.Geocoder();
+           
+  geocodeAddress(geocoder, map);
+          
 
 	   //repaint with places API DATA
 
